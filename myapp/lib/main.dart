@@ -3,9 +3,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(new App());
+  final FirebaseOptions options = FirebaseOptions(
+      apiKey: "AIzaSyCFs_8ryXZ8wcfCF-zY_bAy32yTIGDZXiU",
+      authDomain: "flutter-6cac9.firebaseapp.com",
+      projectId: "flutter-6cac9",
+      storageBucket: "flutter-6cac9.appspot.com",
+      messagingSenderId: "619427164383",
+      appId: "1:619427164383:web:af261472884514f2c8b96a",
+      measurementId: "G-6EC665M7MF");
+  await Firebase.initializeApp(options: options);
+  runApp(App());
 }
 
 class App extends StatelessWidget {
@@ -22,7 +31,7 @@ class App extends StatelessWidget {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return SomethingWentWrong();
+          return MaterialApp(home: SomethingWentWrong(error: snapshot.error));
         }
 
         // Once complete, show your application
@@ -31,7 +40,7 @@ class App extends StatelessWidget {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Loading();
+        return MaterialApp(home: Loading());
       },
     );
   }
@@ -65,7 +74,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  GoogleSignIn googleSignIn = GoogleSignIn(
+    clientId: 'YOUR_CLIENT_ID',
+  );
+
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   void _incrementCounter() {
@@ -127,14 +139,16 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class SomethingWentWrong extends StatelessWidget {
-  const SomethingWentWrong({Key? key}) : super(key: key);
+  final Object? error;
+
+  const SomethingWentWrong({Key? key, this.error}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          'Something went wrong!',
+          'Something went wrong! $error',
           style: TextStyle(color: Colors.red),
         ),
       ),
