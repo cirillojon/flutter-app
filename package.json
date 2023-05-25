@@ -1,4 +1,11 @@
 {
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "My Flutter app",
+  "scripts": {
+    "build": "flutter build web",
+    "deploy": "firebase deploy"
+  },
   "dependencies": {
     "firebase": "^9.22.0"
   }
