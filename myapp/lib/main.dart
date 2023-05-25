@@ -65,10 +65,31 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+
+    // Create a new credential
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await firebaseAuth.signInWithCredential(credential);
   }
 
   @override
@@ -88,6 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: signInWithGoogle,
+              child: const Text('Sign in with Google'),
             ),
           ],
         ),
