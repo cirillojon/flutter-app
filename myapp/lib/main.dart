@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,9 +75,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  GoogleSignIn googleSignIn = GoogleSignIn(
-    clientId: 'YOUR_CLIENT_ID',
-  );
+  GoogleSignIn googleSignIn = GoogleSignIn(clientId: firebaseClientId);
 
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
