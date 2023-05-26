@@ -18,6 +18,7 @@ jobs:
 
       - name: Build Flutter Web
         run: flutter build web
+        working-directory: ../myapp
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
