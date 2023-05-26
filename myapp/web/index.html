@@ -21,19 +21,18 @@
   <link rel="manifest" href="manifest.json">
 
   <script>
-    // The value below is injected by flutter build, do not touch.
+     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
 
-
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
   <!-- Firebase configuration -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
 
   <script>
-    // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyCFs_8ryXZ8wcfCF-zY_bAy32yTIGDZXiU",
       authDomain: "flutter-6cac9.firebaseapp.com",
@@ -50,8 +49,8 @@
   </script>
 
   <script>
+    // Download main.dart.js
     window.addEventListener('load', function(ev) {
-      // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,

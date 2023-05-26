@@ -1,6 +1,9 @@
 # Client ID
 config.dart
 
+# ENV
+.env
+
 # Logs
 logs
 *.log
