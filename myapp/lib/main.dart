@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv;
 import 'config.dart';
 
 void main() async {
-  await dotenv.DotEnv().load();
   WidgetsFlutterBinding.ensureInitialized();
   const FirebaseOptions options = FirebaseOptions(
       apiKey: "AIzaSyCFs_8ryXZ8wcfCF-zY_bAy32yTIGDZXiU",
@@ -77,8 +75,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  GoogleSignIn googleSignIn =
-      GoogleSignIn(clientId: dotenv.DotEnv().env['FIREBASE_CLIENT_ID']);
+  GoogleSignIn googleSignIn = GoogleSignIn(clientId: firebaseClientId);
 
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 

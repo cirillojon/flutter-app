@@ -16,12 +16,6 @@ jobs:
         with:
           channel: 'stable' 
 
-      - name: Replace placeholders with environment variables
-        env:
-          FIREBASE_CLIENT_ID: ${{ secrets.FIREBASE_CLIENT_ID }}
-        run: |
-          sed -i "s/{{clientId}}/$FIREBASE_CLIENT_ID/g" ./myapp/web/index.html
-
       - name: Build Flutter Web
         run: flutter build web
         working-directory: ./myapp
