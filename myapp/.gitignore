@@ -1,3 +1,8 @@
+
+# vars
+config.dart
+.env
+
 # Miscellaneous
 *.class
 *.log

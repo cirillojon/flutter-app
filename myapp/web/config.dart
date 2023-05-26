@@ -1,2 +1,2 @@
 const String firebaseClientId =
-    '878791846445-bv8orvfrfbovm37qh7ti3969l4lpk38l.apps.googleusercontent.com';
+    '619427164383-f5ih0njo9t942tk6tqekn6omfqclf351.apps.googleusercontent.com';
