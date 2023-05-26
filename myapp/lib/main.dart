@@ -6,7 +6,7 @@ import 'config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final FirebaseOptions options = FirebaseOptions(
+  const FirebaseOptions options = FirebaseOptions(
       apiKey: "AIzaSyCFs_8ryXZ8wcfCF-zY_bAy32yTIGDZXiU",
       authDomain: "flutter-6cac9.firebaseapp.com",
       projectId: "flutter-6cac9",
@@ -37,11 +37,11 @@ class App extends StatelessWidget {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MyApp();
+          return const MyApp();
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return MaterialApp(home: Loading());
+        return const MaterialApp(home: Loading());
       },
     );
   }
@@ -148,7 +148,7 @@ class SomethingWentWrong extends StatelessWidget {
       body: Center(
         child: Text(
           'Something went wrong! $error',
-          style: TextStyle(color: Colors.red),
+          style: const TextStyle(color: Colors.red),
         ),
       ),
     );
@@ -160,7 +160,7 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),
